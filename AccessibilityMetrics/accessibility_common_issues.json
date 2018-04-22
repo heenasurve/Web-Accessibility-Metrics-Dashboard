@@ -1,0 +1,16 @@
+{
+  "common_issues" : [
+    {"0":"accesskeys"},
+    {"8":"audio-caption"},
+    {"9":"button-name"},
+    {"11":"color-contrast"},
+    {"14":"document-title"},
+    {"17":"html-has-lang"},
+    {"19":"image_alt"},
+    {"20":"input-image-alt"},
+    {"21":"label"},
+    {"23":"link-name"},
+    {"33":"video-caption"},
+    {"36":"focusable-controls"}
+  ]
+}
