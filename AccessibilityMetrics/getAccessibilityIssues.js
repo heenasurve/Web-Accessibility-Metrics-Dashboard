@@ -32,6 +32,7 @@ function launchChromeAndRunLighthouse(url, opts, config){
         });
     });
 }
+let allData = []
 
 function analyzeWebsite(index) {
     if (index < university_websites.length){
@@ -51,16 +52,10 @@ function analyzeWebsite(index) {
 
                      let neededData = JSON.stringify({websiteName:website,audits:accessibility_audits});
 
+                    allData.push(neededData);
 
-                    fs.writeFile('output.json', neededData, function (err){
-                        if (err){
-                            analyzeWebsite(index = index+1);
-                            return console.log(neededData);
-                        }
-                        console.log(website)
-                        analyzeWebsite(index = index+1);
+                    analyzeWebsite(index = index+1);
 
-                    });
 
                 }
 
@@ -69,7 +64,16 @@ function analyzeWebsite(index) {
 
         });
 
-     }
+     }else {
+        fs.writeFile('new.json', allData, function (err){
+            if (err){
+                return console.log("errer happend ");
+            }
+
+            return console.log("All data Saved");
+
+        });
+    }
 
 
 }
