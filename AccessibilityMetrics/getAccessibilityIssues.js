@@ -22,7 +22,7 @@ let university_websites= [
 
 let audits = common_mistakes.common_issues;
 
-function launchChromeAndRunLighthouse(url, opts, config,callback){
+function launchChromeAndRunLighthouse(url, opts, config){
     return chromeLauncher.launch({chromeFlags: opts.chromeFlags}).then(chrome => {
         opts.port = chrome.port;
         return lighthouse(url, opts, config).then(results => {
@@ -36,20 +36,37 @@ function launchChromeAndRunLighthouse(url, opts, config,callback){
 function analyzeWebsite(index) {
     if (index < university_websites.length){
         let website = university_websites[index];
-        console.log(index, website);
 
         launchChromeAndRunLighthouse(website,opts).then(results => {
-            let response = JSON.stringify(results);
-            fs.writeFile('response.json', response, function (err){
-                if (err){
-                    analyzeWebsite(index = index+1);
-                    return console.log(err);
+
+
+            let  reportCategories =  results["reportCategories"];
+
+
+            reportCategories.forEach(function (val) {
+
+                if (val["name"] == "Accessibility"){
+
+                    let accessibility_audits = val["audits"];
+
+                     let neededData = JSON.stringify({websiteName:website,audits:accessibility_audits});
+
+
+                    fs.writeFile('output.json', neededData, function (err){
+                        if (err){
+                            analyzeWebsite(index = index+1);
+                            return console.log(neededData);
+                        }
+                        console.log(website)
+                        analyzeWebsite(index = index+1);
+
+                    });
+
                 }
 
-                console.log(website);
-                analyzeWebsite(index = index+1);
-
             });
+
+
         });
 
      }
