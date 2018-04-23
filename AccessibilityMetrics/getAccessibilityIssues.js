@@ -128,7 +128,41 @@ function analyzeWebsite(index) {
 
 
 }
- analyzeWebsite(0)
+// analyzeWebsite(0)
+
+function readParseFile(fileName) {
+
+                fs.readFile('./'+fileName+'.json', 'utf8', function (err,data) {
+                if (err) {
+                    return console.log(err);
+                }
+                let JSON_data = JSON.parse(data);
+
+
+                    JSON_data.forEach(function (val) {
+
+                        let websiteName = val["websiteName"]
+                        let audits = val["audits"];
+
+                        audits.forEach(function (value) {
+
+
+                            console.log(websiteName+" , "+value.id+","+value.score+","+ "'"+value.result.helpText+"'")
+
+                        })
+
+
+                    });
+
+            });
+
+}
+//readParseFile("Ranking");
+//readParseFile("SoftwareEngineeringResearchUniversity");
+// readParseFile("International");
+//readParseFile("Withinthesameuniversity");
+
+
 
 // university_websites.forEach(function(website){
 //
