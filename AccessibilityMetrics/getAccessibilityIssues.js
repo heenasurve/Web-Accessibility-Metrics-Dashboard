@@ -53,14 +53,21 @@ let common_mistakes = require("./accessibility_common_issues.json");
 //                 "http://www.iitd.ac.in/",
 //                     "http://www.tsinghua.edu.cn/publish/newthuen/"
 
+//Within the same university
+
+// "http://www.se.rit.edu/",
+//     "http://cis.rit.edu/",
+// "http://cias.rit.edu/",
+//             "http://nsa.rit.edu/",
+//                 "https://www.rit.edu/science/"
+
 let university_websites= [
 
-    "http://www.rit.edu/",
-    "https://www.cam.ac.uk/",
-    "https://www.utoronto.ca/",
-    "https://www.ethz.ch/en.html",
-    "http://www.iitd.ac.in/",
-    "http://www.tsinghua.edu.cn/publish/newthuen/"
+    "http://www.se.rit.edu/",
+    "http://cis.rit.edu/",
+    "http://cias.rit.edu/",
+    "http://nsa.rit.edu/",
+    "https://www.rit.edu/science/"
 
    ];
 
@@ -109,7 +116,7 @@ function analyzeWebsite(index) {
         });
 
      }else {
-        fs.writeFile('International.json', allData, function (err){
+        fs.writeFile('Withinthesameuniversity.json', allData, function (err){
             if (err){
                 return console.log("error happened ");
             }
