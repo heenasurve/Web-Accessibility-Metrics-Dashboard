@@ -11,14 +11,56 @@ const fs = require('fs');
 let common_mistakes = require("./accessibility_common_issues.json");
 
 
+//ranking
+// "http://www.rit.edu/",
+//     "https://www.princeton.edu",
+//     "https://www.harvard.edu",
+//     "https://www.uchicago.edu",
+//     "https://www.columbia.edu",
+//     "https://ucsd.edu",
+//     "https://www1.lehigh.edu",
+//     "http://www.psu.edu",
+//     "https://www.fordham.edu",
+//     "https://www.umass.edu",
+//     "https://www.iastate.edu",
+//     "https://www.catholic.edu/index.html",
+//     "https://www.colostate.edu",
+//     "https://www2.gmu.edu",
+//     "https://www.k-state.edu",
+//     "https://www.wright.edu",
+//     "https://www.umkc.edu",
+//     "http://wmich.edu",
+//     "http://www.rit.edu/",
+//     "https://www.umich.edu/",
+//     "https://www.usc.edu/",
+//     "http://www.northeastern.edu/",
+//     "https://www.dean.edu/"
+
 let university_websites= [
-     "https://www.rit.edu",
-     "http://web.mit.edu/",
-    "https://www.usc.edu/",
+    "http://www.rit.edu/",
     "https://www.princeton.edu",
-     "https://www.harvard.edu",
-     "https://www.columbia.edu"
-];
+    "https://www.harvard.edu",
+    "https://www.uchicago.edu",
+    "https://www.columbia.edu",
+    "https://ucsd.edu",
+    "https://www1.lehigh.edu",
+    "http://www.psu.edu",
+    "https://www.fordham.edu",
+    "https://www.umass.edu",
+    "https://www.iastate.edu",
+    "https://www.catholic.edu/index.html",
+    "https://www.colostate.edu",
+    "https://www2.gmu.edu",
+    "https://www.k-state.edu",
+    "https://www.wright.edu",
+    "https://www.umkc.edu",
+    "http://wmich.edu",
+    "http://www.rit.edu/",
+    "https://www.umich.edu/",
+    "https://www.usc.edu/",
+    "http://www.northeastern.edu/",
+    "https://www.dean.edu/"
+   ];
 
 let audits = common_mistakes.common_issues;
 
@@ -65,9 +107,9 @@ function analyzeWebsite(index) {
         });
 
      }else {
-        fs.writeFile('new.json', allData, function (err){
+        fs.writeFile('Ranking.json', allData, function (err){
             if (err){
-                return console.log("errer happend ");
+                return console.log("error happened ");
             }
 
             return console.log("All data Saved");
